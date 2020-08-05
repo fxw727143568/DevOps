@@ -50,7 +50,7 @@ public class ViewApi {
     public void getView() {
         try {
             // 视图名
-            String viewName = "test-view";
+            String viewName = "11222";
             // 获取视图基本信息
             View view = jenkinsServer.getView(viewName);
             System.out.println(view.getName());
@@ -70,7 +70,7 @@ public class ViewApi {
     public void getViewConfig() {
         try {
             // 视图名
-            String viewName = "test-view";
+            String viewName = "11222";
             // 获取视图配置xml信息
             String viewConfigXml = jenkinsHttpClient.get("/view/" + viewName + "/config.xml");
             System.out.println(viewConfigXml);
@@ -108,7 +108,7 @@ public class ViewApi {
                     "</columns>\n" +
                     "<recurse>false</recurse>\n" +
                     "</hudson.model.ListView>";
-            jenkinsServer.updateView("test-view", xml);
+            jenkinsServer.updateView("11222", xml);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -119,7 +119,7 @@ public class ViewApi {
      */
     public void deleteView() {
         try {
-            String viewName = "test-view";
+            String viewName = "11222";
             jenkinsHttpClient.post("/view/" + viewName + "/doDelete");
         } catch (IOException e) {
             e.printStackTrace();
@@ -132,7 +132,7 @@ public class ViewApi {
         // 创建视图
         //viewApi.createView();
         // 获取视图信息
-        //viewApi.getView();
+        viewApi.getView();
         // 获取视图配置xml信息
         //viewApi.getViewConfig();
         // 更新视图信息

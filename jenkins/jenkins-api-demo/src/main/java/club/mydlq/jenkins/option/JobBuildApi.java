@@ -36,7 +36,7 @@ public class JobBuildApi {
     public void getJobLastBuild(){
         try {
             // 获取 Job 信息
-            JobWithDetails job = jenkinsServer.getJob("test-job");
+            JobWithDetails job = jenkinsServer.getJob("test22");
             // 获得最后编译信息
             Build lastBuild = job.getLastBuild();
             // 获取最后成功的编译信息
@@ -62,9 +62,10 @@ public class JobBuildApi {
     public void getJobFirstBuild(){
         try {
             // 获取 Job 信息
-            JobWithDetails job = jenkinsServer.getJob("test-job");
+            JobWithDetails job = jenkinsServer.getJob("test22");
             // 获得首次编译信息
             Build firstBuild = job.getFirstBuild();
+            System.out.println(firstBuild.details());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -76,7 +77,7 @@ public class JobBuildApi {
     public void getJobByNumber(){
         try {
             // 获取 Job 信息
-            JobWithDetails job = jenkinsServer.getJob("test-job");
+            JobWithDetails job = jenkinsServer.getJob("test22");
             // 根据
             Build numberBuild = job.getBuildByNumber(1);
         } catch (IOException e) {
@@ -90,7 +91,7 @@ public class JobBuildApi {
     public void getJobBuildListAll(){
         try {
             // 获取 Job 信息
-            JobWithDetails job = jenkinsServer.getJob("test-job");
+            JobWithDetails job = jenkinsServer.getJob("test22");
             // 获取全部 Build 信息
             List<Build> builds = job.getAllBuilds();
             for (Build build:builds){
@@ -107,7 +108,7 @@ public class JobBuildApi {
     public void getJobBuildListRange(){
         try {
             // 获取 Job 信息
-            JobWithDetails job = jenkinsServer.getJob("test-job");
+            JobWithDetails job = jenkinsServer.getJob("test22");
             // 设定范围
             Range range = Range.build().from(1).to(2);
             System.err.println(range.getRangeString());
@@ -127,7 +128,7 @@ public class JobBuildApi {
     public void getJobBuildInfo(){
         try {
             // 获取 Job 信息
-            JobWithDetails job = jenkinsServer.getJob("test-job");
+            JobWithDetails job = jenkinsServer.getJob("test22");
             // 这里用最后一次编译来示例
             Build build = job.getLastBuild();
             // 获取构建的 URL 地址
@@ -149,7 +150,7 @@ public class JobBuildApi {
     public void getJobBuildDetailInfo(){
         try {
             // 获取 Job 信息
-            JobWithDetails job = jenkinsServer.getJob("test-job");
+            JobWithDetails job = jenkinsServer.getJob("test22");
             // 这里用最后一次编译来示例
             BuildWithDetails build = job.getLastBuild().details();
             // 获取构建的显示名称
@@ -187,7 +188,7 @@ public class JobBuildApi {
     public void getJobBuildLog(){
         try {
             // 获取 Job 信息
-            JobWithDetails job = jenkinsServer.getJob("test-job");
+            JobWithDetails job = jenkinsServer.getJob("test22");
             // 这里用最后一次编译来示例
             BuildWithDetails build = job.getLastBuild().details();
             // 获取构建的日志，如果正在执行构建，则会只获取已经执行的过程日志
@@ -216,7 +217,7 @@ public class JobBuildApi {
     public void getBuildActiveLog(){
         try {
             // 这里用最后一次编译来示例
-            BuildWithDetails build = jenkinsServer.getJob("test-job").getLastBuild().details();
+            BuildWithDetails build = jenkinsServer.getJob("test22").getLastBuild().details();
             // 当前日志
             ConsoleLog currentLog = build.getConsoleOutputText(0);
             // 输出当前获取日志信息
@@ -239,9 +240,9 @@ public class JobBuildApi {
     public static void main(String[] args) {
         JobBuildApi jobBuildApi = new JobBuildApi();
         // 获取 Job 最后的 Build
-        jobBuildApi.getJobLastBuild();
+        //jobBuildApi.getJobLastBuild();
         // 获取 Job 首次 Build
-        jobBuildApi.getJobFirstBuild();
+        /*jobBuildApi.getJobFirstBuild();
         // 根据 Job Build 编号获取编译信息
         jobBuildApi.getJobByNumber();
         // 获取 Build 全部列表
@@ -249,12 +250,12 @@ public class JobBuildApi {
         // 获取一定范围的 Build 列表
         jobBuildApi.getJobBuildListRange();
         // 获取 Build 基本信息
-        jobBuildApi.getJobBuildInfo();
+        jobBuildApi.getJobBuildInfo();*/
         // 获取 Build 详细信息
         jobBuildApi.getJobBuildDetailInfo();
         // 获取 Build Log 日志信息
-        jobBuildApi.getJobBuildLog();
+       /* jobBuildApi.getJobBuildLog();
         // 获得正在执行的编译 Log 日志信息
-        jobBuildApi.getBuildActiveLog();
+        jobBuildApi.getBuildActiveLog();*/
     }
 }

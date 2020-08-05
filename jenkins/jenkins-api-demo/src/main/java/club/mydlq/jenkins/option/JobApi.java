@@ -52,7 +52,7 @@ public class JobApi {
                              "</definition>\n" +
                           "</flow-definition>";
             // 创建 Job
-            jenkinsServer.createJob("test-job",xml);
+            jenkinsServer.createJob("test222",xml);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -96,7 +96,7 @@ public class JobApi {
                     "<disabled>false</disabled>\n" +
                     "</flow-definition>";
             // 创建 Job
-            jenkinsServer.updateJob("test-job",xml);
+            jenkinsServer.updateJob("test222",xml);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -108,7 +108,7 @@ public class JobApi {
     public void getJob(){
         try {
             // 获取 Job 信息
-            JobWithDetails job = jenkinsServer.getJob("test-job");
+            JobWithDetails job = jenkinsServer.getJob("test22");
             // 获取 Job 名称
             System.out.println(job.getName());
             // 获取 Job URL
@@ -134,7 +134,7 @@ public class JobApi {
     public void getMavenJob(){
         try {
             // 获取 Job 信息
-            MavenJobWithDetails job = jenkinsServer.getMavenJob("test-job");
+            MavenJobWithDetails job = jenkinsServer.getMavenJob("test22");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -175,7 +175,7 @@ public class JobApi {
      */
     public void getJobConfig(){
         try {
-            String xml = jenkinsServer.getJobXml("test-job");
+            String xml = jenkinsServer.getJobXml("test22");
             System.out.println(xml);
         } catch (IOException e) {
             e.printStackTrace();
@@ -187,7 +187,7 @@ public class JobApi {
      */
     public void buildJob(){
         try {
-            jenkinsServer.getJob("test-job").build();
+            jenkinsServer.getJob("test222").build();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -203,10 +203,10 @@ public class JobApi {
              * 现在对这个值进行设置，然后执行一个输出这个值的脚本
              */
             // 设置参数值
-            Map<String,String> param = new HashMap<>();
+            Map<String,String> param = new HashMap<String, String>();
             param.put("key","hello world!");
             // 执行 build 任务
-            jenkinsServer.getJob("test-job").build(param);
+            jenkinsServer.getJob("test22").build(param);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -218,7 +218,7 @@ public class JobApi {
     public void stopLastJobBuild(){
         try {
             // 获取最后的 build 信息
-            Build build = jenkinsServer.getJob("test-job").getLastBuild();
+            Build build = jenkinsServer.getJob("test22").getLastBuild();
             // 停止最后的 build
             build.Stop();
         } catch (IOException e) {
@@ -231,7 +231,7 @@ public class JobApi {
      */
     public void deleteJob(){
         try {
-            jenkinsServer.deleteJob("test-job");
+            jenkinsServer.deleteJob("test22");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -242,7 +242,7 @@ public class JobApi {
      */
     public void disableJob(){
         try {
-            jenkinsServer.disableJob("test-job");
+            jenkinsServer.disableJob("test22");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -253,7 +253,7 @@ public class JobApi {
      */
     public void enableJob(){
         try {
-            jenkinsServer.enableJob("test-job");
+            jenkinsServer.enableJob("test22");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -261,8 +261,9 @@ public class JobApi {
 
     public static void main(String[] args) {
         JobApi jobApi = new JobApi();
+        jobApi.buildParamJob();
         // 创建 Job
-        jobApi.ceateJob();
+       /* jobApi.ceateJob();
         // 构建无参数的 Job
         jobApi.buildJob();
         // 构建带参数的 Job
@@ -274,11 +275,11 @@ public class JobApi {
         // 获取 Job 信息
         jobApi.getJob();
         // 获取 Maven 项目 Job
-        jobApi.getMavenJob();
+        jobApi.getMavenJob();*/
         // 获取 Job 配置xml
-        jobApi.getJobConfig();
+        //jobApi.getJobConfig();
         // 获取全部 Job 列表
-        jobApi.getJobList();
+       /* jobApi.getJobList();
         // 根据 view 名称获取 Job 列表
         jobApi.getJobListByView();
         // 禁用 Job
@@ -286,7 +287,7 @@ public class JobApi {
         // 启用 Job
         jobApi.enableJob();
         // 删除 Job
-        jobApi.deleteJob();
+        jobApi.deleteJob();*/
     }
 
 }
